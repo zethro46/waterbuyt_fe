@@ -1,0 +1,5 @@
+Font chữ: Inter
+<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
+Icon: Version 6.7.2; Classic; link truy cập: https://fontawesome.com/icons#packs
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet" />
