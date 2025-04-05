@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waterbus</title>
+    <title>Trang chủ - Waterbuyt</title>
     
     <!-- Font chữ Inter -->
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
@@ -12,28 +12,58 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet" />
     
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
         
         /* Header */
-        header {
-            background: #007BFF;
-            color: white;
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; 
             align-items: center;
-            padding: 15px 20px;
+            padding: 5px 30px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+
+
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            transition: background 0.2s, color 0.2s;
+            adding: 10px 20px;
+            z-index: 1000;
         }
+
+        .header a {
+            color: white;
+            transition: color 0.2s;
+        }
+        .header.scrolled {
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background: white !important;
+        }
+        .header.scrolled a {
+            color: black !important;
+        }
+            
         .logo {
             display: flex;
             align-items: center;
         }
         .logo img {
-            height: 40px;
+            height: 50px;
             margin-right: 10px;
         }
         nav {
@@ -49,56 +79,367 @@
         .flag img {
             height: 30px;
         }
+
+        /* Banner */
+        .banner {
+            background-color: rgb(0, 0, 0, 0);
+            padding: 10px 20px;
+            text-align: left;
+            width: 70%;
+        }
+
+        .banner a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 30px;
+        }
+
+        .banner a:hover {
+            border-bottom: 3px solid #f2a40af0;
+        }
         
         /* Hero Section */
         .hero {
+            height: 100vh;
+            background: url('image/background.png') no-repeat ;
+            background-size: cover;
             text-align: center;
-            padding: 50px;
-            background: url('banner.jpg') no-repeat center/cover;
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         .hero h1 {
-            font-size: 36px;
+            font-size: 48px;
         }
         .hero p {
-            font-size: 18px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
+
+        /* Quy trình đặt vé */
+        .booking-process {
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        .booking-process h2 {
+            font-size: 30px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 25px 0px;
+        }
+
+        .step { 
+            width: 240px;
+            text-align: center;
+        }
+
+        .step i {
+            font-size: 30px;
+            color: #f2a40af0;
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            
+        }
+
+        .step p {
+            font-size: 18px;
+            max-width: 220px;   
+            color: #666;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #0088ff;
+            font-style: italic;
+        }
+
+        /* Danh sách Bến tàu */
+        .stations {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 30px;
+        }
+        .stations h2 {
+            font-size: 30px;
+            color: #000000;
+        }
+        .station-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .station-tab {
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 15px;
+            cursor: pointer;
+            position: relative;
+            color: #333;
+        }
+        .station-tab.active {
+            border-bottom: 3px solid #f2a40af0;
+        }
+        .station-content {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 80%;
+            padding: 20px 0px;
+            margin: auto;
+            text-align: left;
+        }
+        .station-content img {
+            width: 500px;
+            border-radius: 10px;
+        }
+        .station-info {
+            max-width: 500px;
+        }
         
+        .station-info h3 {
+            font-size: 20px;
+            font-weight: bolder;
+            color: #222;
+            margin-top: 0px;
+        }
+        .station-info p {
+            font-size: 20px;
+            color: #555;
+        }
+        .detail-btn {
+            display: inline-block;
+            margin-top: 10px;
+            background: #f2a40af0;
+            color: black;
+            padding: 10px 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .detail-btn:hover {
+            background: #f2a40af0;
+        }
+
         /* Footer */
         footer {
-            background: #007BFF;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            text-align: center;
-            padding: 10px;
+            padding: 20px 30px;
         }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo {
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        .footer-info {
+            list-style: none;
+            padding: 20px 50px;
+        }
+
+        .footer-info li {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="logo_waterbuyt.png" alt="Logo Waterbuyt">
-            <h2>Waterbus</h2>
+    <header  class="header">
+            <!-- <div class="logo">
+                <img src="image/logo2_waterbuyt.png" alt="Logo Waterbuyt">
+            </div> -->
+        <a href="index.html">
+            <div class="logo">
+                <img src="image/logo2_waterbuyt.png" alt="Waterbuyt Logo">
+            </div>
+        </a>
+
+        <div class="banner">
+            <a href="index.html">Trang chủ</a> 
+            <a href="">Đặt vé</a>
         </div>
-        <nav>
-            <a href="#">Trang chủ</a>
-            <a href="#">Đặt vé</a>
-        </nav>
         <div class="flag">
-            <img src="staff/assets/images/logo-la-co-03.jpg" alt="Cờ Việt Nam">
+            <img src="image/Flag_VN.png" alt="Cờ Việt Nam">
         </div>
     </header>
     
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Chào mừng đến với Waterbus</h1>
-        <p>Trải nghiệm phương tiện giao thông xanh hiện đại.</p>
+        <h1>Chào mừng đến với Waterbuyt</h1>
+        <h2>Trải nghiệm phương tiện giao thông hiện đại.</h2>
     </section>
     
+    <!-- Quy trình đặt vé -->
+    <section class="booking-process">
+        <h2>Quy trình đặt vé trong 4 bước</h2>
+        <div class="steps">
+            <div class="step">
+                <i class="fas fa-search"></i>
+                <h3>Tìm chuyến</h3>
+                <p>Chọn thông tin hành trình và ấn "Tìm chuyến".</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-user-check"></i>
+                <h3>Chọn chỗ</h3>
+                <p>Chọn chuyến, chỗ ngồi phù hợp, điền thông tin.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-credit-card"></i>
+                <h3>Đặt chỗ</h3>
+                <p>Tiến hành thanh toán online hoặc giữ chỗ.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-anchor"></i>
+                <h3>Lên tàu</h3>
+                <p>Nhận mã, xuất trình cho nhân viên khi lên tàu.</p>
+            </div>
+        </div>
+        <p class="note">
+            <i>Lưu ý: Saigon Waterbuyt miễn phí vé cho người cao tuổi từ 70 và các bé dưới 1 tuổi, người khuyết tật và thương binh.</i>
+        </p>
+    </section>
+
+
+    <!-- Danh sách bến tàu -->
+    <section class="stations">
+        <h2>Hệ thống bến tàu Saigon Waterbuyt</h2>
+        <div class="station-tabs">
+            <button class="station-tab active" onclick="showStation('bach-dang')">Bạch Đằng</button>
+            <button class="station-tab" onclick="showStation('thu-thiem')">Thủ Thiêm</button>
+            <button class="station-tab" onclick="showStation('binh-an')">Bình An</button>
+            <button class="station-tab" onclick="showStation('thanh-da')">Thanh Đa</button>
+            <button class="station-tab" onclick="showStation('hiep-binh-chanh')">Hiệp Bình Chánh</button>
+            <button class="station-tab" onclick="showStation('linh-dong')">Linh Đông</button>
+        </div>
+
+        <div class="station-content" id="bach-dang">
+            <img src="image/ben-bach-dang.png" alt="Bến Bạch Đằng">
+            <div class="station-info">
+                <h3>Bến tàu Bạch Đằng - Nơi giao thoa lịch sử và hiện đại</h3>
+                <p>Tọa lạc ngay trung tâm Thành phố (Q1) với công viên Bạch Đằng, phố đi bộ Nguyễn Huệ 
+                cùng nhiều địa điểm vui chơi, ăn uống khác đang chờ bạn.</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+
+        <div class="station-content" id="thu-thiem" style="display: none;">
+            <img src="image/ben-thu-thiem.png" alt="Bến Thủ Thiêm">
+            <div class="station-info">
+                <h3>Bến tàu Thủ Thiêm - Sự kết hợp giữa cảnh quan hiện đại và lịch sử</h3>
+                <p>Bến tàu được cải tạo lại với sự kết hợp giữa cảnh quan hiện đại và lịch sử, 
+                tạo điểm đến cho người dân, du khách tham quan, ngắm cảnh, chờ tàu</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+
+        <div class="station-content" id="binh-an" style="display: none;">
+            <img src="image/ben-binh-an.png" alt="Bến Bình An">
+            <div class="station-info">
+                <h3>Bến tàu Bình An - Ngắm nhìn thành phố đổi mới</h3>
+                <p>Kết nối 2 thành phố: TP. Thủ Đức - TP. HCM. Đây là nơi ngắm tòa nhà Landmark 81, 
+                kết nối Vinhome Central Park, Tân Cảng, Chợ Thảo Điền và các điểm đến khác.</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+
+        <div class="station-content" id="thanh-da" style="display: none;">
+            <img src="image/ben-thanh-da.png" alt="Bến Thanh Đa">
+            <div class="station-info">
+                <h3>Bến tàu Thanh Đa - Nhịp sống bình yên giữa lòng đô thị</h3>
+                <p>Bán đảo Thanh Đa xanh mát, yên bình giữa lòng thành phố nhộn nhịp, sôi động. 
+                Dừng chân tại đây, đừng quên thưởng thức Cháo Vịt Thanh Đa trứ danh, Phong Cua 
+                hay dạo chơi KDL Bình Quới.</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+
+        <div class="station-content" id="hiep-binh-chanh" style="display: none;">
+            <img src="image/ben-hiep-binh-chanh.png" alt="Bến Hiệp Bình Chánh">
+            <div class="station-info">
+                <h3>Bến tàu Hiệp Bình Chánh - Điểm hẹn của người Sài Gòn</h3>
+                <p>Đúng với biệt danh “điểm hẹn của người Sài Gòn” Xung quanh ga tàu thủy 
+                Hiệp Bình Chánh rất nhiều nhà hàng, dịch vụ vui chơi ăn uống mà tiêu biểu là Giga Mall.</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        
+        <div class="station-content" id="linh-dong" style="display: none;">
+            <img src="image/ben-linh-dong.png" alt="Bến Linh Đông">
+            <div class="station-info">
+                <h3>Bến tàu Linh Đông - Vi vu làng du lịch Bình Quới</h3>
+                <p>Tại đây bạn sẽ cảm nhận cảm giác thanh mát mộc mạc của làng quê yên bình. 
+                Đặc biệt, cạnh Ga tàu thủy Linh Đông có bến đò Bình Qưới để sang KDL Bình Quới 2.</p>
+                <a href="" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+    </section>
+    <script>
+    function showStation(stationId) {
+        // Ẩn tất cả nội dung bến tàu
+        document.querySelectorAll('.station-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        // Hiển thị nội dung bến được chọn
+        document.getElementById(stationId).style.display = 'flex';
+        // Xóa class "active" ở tất cả tab
+        document.querySelectorAll('.station-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        // Thêm class "active" vào tab được click
+        document.querySelector(`[onclick="showStation('${stationId}')"]`).classList.add('active');
+    }
+    window.addEventListener("scroll", function() {
+        let header = document.querySelector(".header");
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+    </script>
+
     <!-- Footer -->
     <footer>
-        <p>Liên hệ: 0123 456 789 | Email: contact@waterbus.vn | Địa chỉ: ...</p>
+        <div class="footer-container">
+            <img src="image/logo2_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+            <ul class="footer-info">
+                <li>Liên hệ: 0123 456 789</li>
+                <li>Email: contact@waterbuyt.vn</li>
+                <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+            </ul>
+        </div>
     </footer>
 </body>
 </html>
