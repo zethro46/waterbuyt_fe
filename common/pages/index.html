@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Waterbuyt</title>
+    
+    <!-- Font chữ Inter -->
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    
+    <!-- Font Awesome 6.7.1 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet" />
+    
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="/common/assets/styles/index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/common/pages/index.html">
+            <div class="logo">
+                <img src="/common/assets/images/logo2_waterbuyt.png" alt="Waterbuyt Logo">
+            </div>
+        </a>
+
+        <div class="banner">
+            <a href="/common/pages/index.html">Trang chủ</a> 
+            <a href="">Bến tàu</a>
+            <a href="">Lịch khởi hành</a>
+            <a href="">Đặt vé</a>
+            <a href="">Liên hệ</a>
+
+        </div>
+        
+        <div class="flag">
+            <a href="/common/pages/login.html">Nhân viên đăng nhập</a>
+            <img src="/common/assets/images/Flag_VN.png" alt="Cờ Việt Nam">
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Chào mừng đến với Waterbuyt</h1>
+        <h2>Trải nghiệm phương tiện giao thông hiện đại.</h2>
+    </section>
+    
+    <!-- Quy trình đặt vé -->
+    <section class="booking-process">
+        <h2>Quy trình đặt vé trong 4 bước</h2>
+        <div class="steps">
+            <div class="step">
+                <i class="fas fa-search"></i>
+                <h3>Tìm chuyến</h3>
+                <p>Chọn thông tin hành trình và ấn "Tìm chuyến".</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-user-check"></i>
+                <h3>Chọn chỗ</h3>
+                <p>Chọn chuyến, chỗ ngồi phù hợp, điền thông tin.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-credit-card"></i>
+                <h3>Đặt chỗ</h3>
+                <p>Tiến hành thanh toán online hoặc giữ chỗ.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-anchor"></i>
+                <h3>Lên tàu</h3>
+                <p>Nhận mã, xuất trình cho nhân viên khi lên tàu.</p>
+            </div>
+        </div>
+        <p class="note">
+            <i>Lưu ý: Saigon Waterbuyt miễn phí vé cho người cao tuổi từ 70 và các bé dưới 1 tuổi, người khuyết tật và thương binh.</i>
+        </p>
+    </section>
+
+    <!-- Danh sách bến tàu -->
+    <section class="stations">
+        <h2>Hệ thống bến tàu Saigon Waterbuyt</h2>
+        <div class="station-tabs">
+            <button class="station-tab active" onclick="showStation('bach-dang')">Bạch Đằng</button>
+            <button class="station-tab" onclick="showStation('thu-thiem')">Thủ Thiêm</button>
+            <button class="station-tab" onclick="showStation('binh-an')">Bình An</button>
+            <button class="station-tab" onclick="showStation('thanh-da')">Thanh Đa</button>
+            <button class="station-tab" onclick="showStation('hiep-binh-chanh')">Hiệp Bình Chánh</button>
+            <button class="station-tab" onclick="showStation('linh-dong')">Linh Đông</button>
+        </div>
+
+        <!-- Nội dung bến tàu (chỉ 1 hiển thị tại 1 thời điểm) -->
+        <div class="station-content" id="bach-dang">
+            <img src="/common/assets/images/ben-bach-dang.png" alt="Bến Bạch Đằng">
+            <div class="station-info">
+                <h3>Bến tàu Bạch Đằng - Nơi giao thoa lịch sử và hiện đại</h3>
+                <p>Tọa lạc ngay trung tâm Thành phố (Q1) với công viên Bạch Đằng, phố đi bộ Nguyễn Huệ 
+                    cùng nhiều địa điểm vui chơi, ăn uống khác đang chờ bạn.</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        <div class="station-content" id="thu-thiem" style="display: none;">
+            <img src="/common/assets/images/ben-thu-thiem.png" alt="Bến Thủ Thiêm">
+            <div class="station-info">
+                <h3>Bến tàu Thủ Thiêm - Sự kết hợp giữa cảnh quan hiện đại và lịch sử</h3>
+                <p>Bến tàu được cải tạo lại với sự kết hợp giữa cảnh quan hiện đại và lịch sử, 
+                    tạo điểm đến cho người dân, du khách tham quan, ngắm cảnh, chờ tàu</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        <div class="station-content" id="binh-an" style="display: none;">
+            <img src="/common/assets/images/ben-binh-an.png" alt="Bến Bình An">
+            <div class="station-info">
+                <h3>Bến tàu Bình An - Ngắm nhìn thành phố đổi mới</h3>
+                <p>Kết nối 2 thành phố: TP. Thủ Đức - TP. HCM. Đây là nơi ngắm tòa nhà Landmark 81, 
+                    kết nối Vinhome Central Park, Tân Cảng, Chợ Thảo Điền và các điểm đến khác.</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        <div class="station-content" id="thanh-da" style="display: none;">
+            <img src="/common/assets/images/ben-thanh-da.png" alt="Bến Thanh Đa">
+            <div class="station-info">
+                <h3>Bến tàu Thanh Đa - Nhịp sống bình yên giữa lòng đô thị</h3>
+                <p>Bán đảo Thanh Đa xanh mát, yên bình giữa lòng thành phố nhộn nhịp, sôi động. 
+                    Dừng chân tại đây, đừng quên thưởng thức Cháo Vịt Thanh Đa trứ danh, Phong Cua 
+                    hay dạo chơi KDL Bình Quới.</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        <div class="station-content" id="hiep-binh-chanh" style="display: none;">
+            <img src="/common/assets/images/ben-hiep-binh-chanh.png" alt="Bến Hiệp Bình Chánh">
+            <div class="station-info">
+                <h3>Bến tàu Hiệp Bình Chánh - Điểm hẹn của người Sài Gòn</h3>
+                <p>Đúng với biệt danh “điểm hẹn của người Sài Gòn” Xung quanh ga tàu thủy 
+                    Hiệp Bình Chánh rất nhiều nhà hàng, dịch vụ vui chơi ăn uống mà tiêu biểu là Giga Mall.</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+        <div class="station-content" id="linh-dong" style="display: none;">
+            <img src="/common/assets/images/ben-linh-dong.png" alt="Bến Linh Đông">
+            <div class="station-info">
+                <h3>Bến tàu Linh Đông - Vi vu làng du lịch Bình Quới</h3>
+                <p>ại đây bạn sẽ cảm nhận cảm giác thanh mát mộc mạc của làng quê yên bình. 
+                    Đặc biệt, cạnh Ga tàu thủy Linh Đông có bến đò Bình Qưới để sang KDL Bình Quới 2.</p>
+                <a href="#" class="detail-btn">Xem chi tiết và chỉ đường</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <img src="/common/assets/images/logo2_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+            <ul class="footer-info">
+                <li>Liên hệ: 0123 456 789</li>
+                <li>Email: contact@waterbuyt.vn</li>
+                <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- JavaScript riêng -->
+    <script src="/common/js/index.js"></script>
+</body>
+</html>
