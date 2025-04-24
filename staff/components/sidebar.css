@@ -1,0 +1,76 @@
+/* General Styles */
+#sidebar {
+    font-family: 'Inter', sans-serif;
+    width: 15%;
+    height: 100vh;
+    background-color: #F9FAFB;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+    border-bottom: 1px solid #AFAFAF;
+    cursor: pointer;
+    flex-direction: column; 
+}
+
+
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.menu li {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #646464;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 20px;
+}
+
+.menu li:hover a {
+    color: #005EB5;
+}
+
+.menu li:hover {
+    background-color: rgba(0, 94, 181, 0.17);
+}
+
+.menu li i {
+    font-size: 16px;
+}
+
+.menu li a.active {
+    color: #005EB5;
+}
+
+.menu li a.active i {
+    color: #005EB5;
+}

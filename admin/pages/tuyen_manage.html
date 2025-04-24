@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý tuyến</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/styles/tuyen_manage.css">
+  <link rel="stylesheet" href="/admin/assets/styles/sidebar.css"> <!-- Cập nhật đường dẫn -->
+</head>
+<body class="bg-gray-100">
+<header class="header">
+  <a href="/admin/pages/thongke.html">
+      <div class="logo">
+          <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo">
+      </div>
+  </a>
+  <div class="header-title">Quản lý tuyến</div>
+</header>
+
+<div class="layout-container">
+  <div id="sidebar"></div>
+
+  <script>
+    fetch('/admin/components/sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar').innerHTML = data;
+        const menuHeaders = document.querySelectorAll('.menu-header');
+        menuHeaders.forEach(header => {
+          header.addEventListener('click', function () {
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+          });
+        });
+      });
+  </script>
+
+  <div class="main-content">
+    <h1 class="text-2xl font-bold mb-4">Danh sách tuyến</h1>
+
+    <form id="routeForm" class="space-y-4 mb-6 max-w-xl" onsubmit="submitRoute(event)">
+      <input type="hidden" id="editingIndex">
+      <div>
+        <label class="block font-medium">Điểm đi:</label>
+        <input type="text" id="diemDi" required class="border rounded px-3 py-2 w-full">
+      </div>
+      <div>
+        <label class="block font-medium">Điểm đến:</label>
+        <input type="text" id="diemDen" required class="border rounded px-3 py-2 w-full">
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Lưu</button>
+    </form>
+
+    <table class="w-full bg-white shadow-md rounded">
+      <thead>
+        <tr class="bg-gray-200 text-left">
+          <th class="py-2 px-4">Điểm đi</th>
+          <th class="py-2 px-4">Điểm đến</th>
+          <th class="py-2 px-4">Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="routeTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+      <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+      <ul class="footer-info">
+          <li>Liên hệ: 0123 456 789</li>
+          <li>Email: contact@waterbuyt.vn</li>
+          <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+      </ul>
+  </div>
+</footer>
+
+<script src="/admin/js/tuyen_manage.js"></script>
+</body>
+</html>

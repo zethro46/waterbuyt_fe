@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch khởi hành</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/admin2/schedule/schedule.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <div id="header"></div>
+
+    <section class="daily-trips">
+        <h2>Lịch khởi hành</h2>
+        <p>
+          Mỗi ngày có 4 chuyến lượt đi và 4 chuyến lượt về. <br>
+          Lịch trình giống nhau kể cả thứ 7, chủ nhật và ngày lễ. 
+          Đi qua tất cả các bến: Bạch Đằng, Thủ Thiêm, Bình An, Thanh Đa, Hiệp Bình Chánh và Linh Đông 
+          (thời gian di chuyển giữa mỗi bến là 30 phút).      
+        </p>
+        <!-- Bảng Lượt đi -->
+        <div class="trip-table">
+            <h3><i class="fa-solid fa-anchor"></i> Lượt đi: Bạch Đằng – Linh Đông</h3>
+            <table>
+            <thead>
+                <tr>
+                <th></th>
+                <th>Bạch Đằng</th>
+                <th>Thủ Thiêm</th>
+                <th>Bình An</th>
+                <th>Thanh Đa</th>
+                <th>Hiệp Bình Chánh</th>
+                <th>Linh Đông</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Chuyến 1</td><td>8:00</td><td>8:30</td><td>9:00</td><td>9:30</td><td>10:00</td><td>10:30</td></tr>
+                <tr><td>Chuyến 3</td><td>11:00</td><td>11:30</td><td>12:00</td><td>12:30</td><td>13:00</td><td>13:30</td></tr>
+                <tr><td>Chuyến 5</td><td>14:00</td><td>14:30</td><td>15:00</td><td>15:30</td><td>16:00</td><td>16:30</td></tr>
+                <tr><td>Chuyến 7</td><td>17:00</td><td>17:30</td><td>18:00</td><td>18:30</td><td>19:00</td><td>19:30</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <!-- Bảng Lượt về -->
+        <div class="trip-table">
+            <h3><i class="fa-solid fa-anchor"></i> Lượt về: Linh Đông – Bạch Đằng</h3>
+            <table>
+            <thead>
+                <tr>
+                <th></th>
+                <th>Linh Đông</th>
+                <th>Hiệp Bình Chánh</th>
+                <th>Thanh Đa</th>
+                <th>Bình An</th>
+                <th>Thủ Thiêm</th>
+                <th>Bạch Đằng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Chuyến 2</td><td>8:00</td><td>8:30</td><td>9:00</td><td>9:30</td><td>10:00</td><td>10:30</td></tr>
+                <tr><td>Chuyến 4</td><td>11:00</td><td>11:30</td><td>12:00</td><td>12:30</td><td>13:00</td><td>13:30</td></tr>
+                <tr><td>Chuyến 6</td><td>14:00</td><td>14:30</td><td>15:00</td><td>15:30</td><td>16:00</td><td>16:30</td></tr>
+                <tr><td>Chuyến 8</td><td>17:00</td><td>17:30</td><td>18:00</td><td>18:30</td><td>19:00</td><td>19:30</td></tr>
+            </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    
+    <script src="/admin2/homepage/index.js"></script>
+</body>
+</html>

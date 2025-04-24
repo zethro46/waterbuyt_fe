@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý bến</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/styles/ben_manage.css">
+  <link rel="stylesheet" href="/admin/assets/styles/sidebar.css"> <!-- Cập nhật đường dẫn -->
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="header">
+    <a href="/admin/pages/thongke.html">
+        <div class="logo">
+            <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo">
+        </div>
+    </a>
+    <div class="header-title">Quản lý bến</div>
+    <!-- <div class="banner">
+        <a href="/common/pages/index.html">Trang chủ</a> 
+        <a href="">Bến tàu</a>
+        <a href="">Lịch khởi hành</a>
+        <a href="">Đặt vé</a>
+        <a href="">Liên hệ</a>
+
+    </div>
+    
+     <div class="flag">
+        <a href="/common/pages/login.html">Nhân viên đăng nhập</a>
+        <img src="/common/assets/images/Flag_VN.png" alt="Cờ Việt Nam">
+    </div> --> 
+</header>
+  <!-- Container cha -->
+  <div class="layout-container">
+
+    
+    <!-- Sidebar -->
+    <!-- <iframe src="sidebar.html" class="sidebar-iframe"></iframe> -->
+    <div id="sidebar"></div>
+
+<script>
+  // Tải nội dung sidebar.html và gắn lại sự kiện
+  fetch('/admin/components/sidebar.html') <!-- Cập nhật đường dẫn -->
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sidebar').innerHTML = data;
+
+      // Gắn lại sự kiện toggleMenu sau khi nội dung được tải
+      const menuHeaders = document.querySelectorAll('.menu-header');
+      menuHeaders.forEach(header => {
+        header.addEventListener('click', function () {
+          const submenu = this.nextElementSibling;
+          if (submenu) {
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      });
+    });
+</script>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <h1 class="text-2xl font-bold mb-4">Quản lý bến</h1>
+
+      <!-- Tìm kiếm -->
+      <input type="text" id="searchInput" placeholder="Tìm kiếm tên bến..." class="border border-gray-300 rounded px-3 py-2 mb-4 w-full" oninput="renderBenList()">
+
+      <!-- Form thêm/sửa bến -->
+      <form id="benForm" class="space-y-4 mb-6" onsubmit="submitBen(event)">
+        <input type="hidden" id="editingIndex">
+        <div>
+          <label class="block font-medium">Tên bến:</label>
+          <input type="text" id="tenBen" required class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+          <label class="block font-medium">Địa chỉ:</label>
+          <input type="text" id="diaChi" required class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+          <label class="block font-medium">Thứ tự:</label>
+          <input type="number" id="thuTu" required class="border rounded px-3 py-2 w-full">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Lưu</button>
+      </form>
+
+      <!-- Danh sách bến -->
+      <table class="w-full bg-white shadow-md rounded">
+        <thead>
+          <tr class="bg-gray-200 text-left">
+            <th class="py-2 px-4">Tên bến</th>
+            <th class="py-2 px-4">Địa chỉ</th>
+            <th class="py-2 px-4">Thứ tự</th>
+            <th class="py-2 px-4">Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="benTable">
+          <!-- Dữ liệu sẽ được render từ JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+        <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+        <ul class="footer-info">
+            <li>Liên hệ: 0123 456 789</li>
+            <li>Email: contact@waterbuyt.vn</li>
+            <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+        </ul>
+    </div>
+</footer>
+
+  <script type="module" src="/admin/js/ben_manage.js"></script>
+</body>
+</html>

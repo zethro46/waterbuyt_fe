@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý vé</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/styles/ticket_manage.css">
+  <link rel="stylesheet" href="/admin/assets/styles/sidebar.css"> <!-- Cập nhật đường dẫn -->
+</head>
+<body class="bg-gray-100">
+<header class="header">
+  <a href="/admin/pages/thongke.html">
+    <div class="logo">
+      <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo">
+    </div>
+  </a>
+  <div class="header-title">Quản lý vé</div>
+</header>
+
+<div class="layout-container">
+  <div id="sidebar"></div>
+
+  <script>
+    fetch('/admin/components/sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar').innerHTML = data;
+        const menuHeaders = document.querySelectorAll('.menu-header');
+        menuHeaders.forEach(header => {
+          header.addEventListener('click', function () {
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+          });
+        });
+      });
+  </script>
+
+  <div class="main-content">
+    <h1 class="text-2xl font-bold mb-4">Danh sách vé</h1>
+
+    <table class="w-full bg-white shadow-md rounded mb-6">
+      <thead>
+        <tr class="bg-gray-200 text-left">
+          <th class="py-2 px-4">Người đặt</th>
+          <th class="py-2 px-4">Ngày đặt</th>
+          <th class="py-2 px-4">Điểm đi</th>
+          <th class="py-2 px-4">Điểm đến</th>
+          <th class="py-2 px-4">Ghế</th>
+          <th class="py-2 px-4">Thanh toán</th>
+          <th class="py-2 px-4">Chi tiết</th>
+        </tr>
+      </thead>
+      <tbody id="ticketTable"></tbody>
+    </table>
+
+    <div id="ticketDetail" class="bg-white p-4 rounded shadow hidden">
+      <h2 class="text-xl font-semibold mb-2">Chi tiết vé</h2>
+      <p><strong>Người đặt:</strong> <span id="detailNguoiDat"></span></p>
+      <p><strong>Ngày đặt:</strong> <span id="detailNgayDat"></span></p>
+      <p><strong>Điểm đi:</strong> <span id="detailDiemDi"></span></p>
+      <p><strong>Điểm đến:</strong> <span id="detailDiemDen"></span></p>
+      <p><strong>Ghế:</strong> <span id="detailGhe"></span></p>
+      <p><strong>Hình thức thanh toán:</strong> <span id="detailThanhToan"></span></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+    <ul class="footer-info">
+      <li>Liên hệ: 0123 456 789</li>
+      <li>Email: contact@waterbuyt.vn</li>
+      <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/admin/js/tiket_manage.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý thông tin cá nhân</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/styles/self_manage.css"> <!-- Cập nhật đường dẫn -->
+  <link rel="stylesheet" href="/admin/assets/styles/sidebar.css"> <!-- Cập nhật đường dẫn -->
+</head>
+<body class="bg-gray-100">
+<header class="header">
+  <a href="/admin/pages/thongke.html">
+      <div class="logo">
+          <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo">
+      </div>
+  </a>
+  <div class="header-title">Quản lý thông tin cá nhân</div>
+</header>
+
+<div class="layout-container">
+  <div id="sidebar"></div>
+
+  <script>
+    fetch('/admin/components/sidebar.html') <!-- Cập nhật đường dẫn -->
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar').innerHTML = data;
+        const menuHeaders = document.querySelectorAll('.menu-header');
+        menuHeaders.forEach(header => {
+          header.addEventListener('click', function () {
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+          });
+        });
+      });
+  </script>
+
+  <div class="main-content">
+    <h1 class="text-2xl font-bold mb-4">Thông tin cá nhân</h1>
+
+    <!-- Bố cục hai cột -->
+    <div class="profile-container">
+      <!-- Cột bên trái: Ảnh admin -->
+      <div class="admin-profile">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8QyG2365zzOcnNpxpG8gXpJCZD-ZbLgQ6Q&s" alt="Admin Avatar" class="admin-avatar">
+        <p class="admin-name">Nguyễn Văn A</p>
+      </div>
+
+      <!-- Cột bên phải: Nội dung -->
+      <div class="profile-details">
+        <form id="profileForm" class="space-y-4" onsubmit="submitProfile(event)">
+          <div>
+            <label class="block font-medium">Họ tên:</label>
+            <input type="text" id="hoTen" class="border rounded px-3 py-2 w-full" required>
+          </div>
+          <div>
+            <label class="block font-medium">Email:</label>
+            <input type="email" id="email" class="border rounded px-3 py-2 w-full" required>
+          </div>
+          <div>
+            <label class="block font-medium">Số điện thoại:</label>
+            <input type="tel" id="soDienThoai" class="border rounded px-3 py-2 w-full" required>
+          </div>
+          <div>
+            <label class="block font-medium">Địa chỉ:</label>
+            <input type="text" id="diaChi" class="border rounded px-3 py-2 w-full">
+          </div>
+          <div>
+            <label class="block font-medium">Mật Khẩu:</label>
+            <input type="password" id="passwd" class="border rounded px-3 py-2 w-full">
+          </div>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+      <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo" class="footer-logo">
+      <ul class="footer-info">
+          <li>Liên hệ: 0123 456 789</li>
+          <li>Email: contact@waterbuyt.vn</li>
+          <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+      </ul>
+  </div>
+</footer>
+
+<script type="module" src="/admin/js/self_manage.js"></script>
+</body>
+</html>
