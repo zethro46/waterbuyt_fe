@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+.container {
+    margin-left: 15%;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #3f3f3f; 
+    margin-bottom: 30px;
+  }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.icon-button i {
+    color: #4BBDC3;
+    font-size: 18px;
+}
+
+.icon-button:hover i {
+    color: #095255;
+}
+
+
+th, td {
+    font-size: 13px;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: #FFBD59; /* Màu nền của thead */
+    color: rgb(43, 43, 43); /* Màu chữ trong thead */
+    position: sticky;
+}
+tbody {
+    overflow-y: auto;
+}
+
+
+/* Popup */
+.popup {
+    display: none; /* Ẩn popup mặc định */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Nội dung popup */
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Nút đóng */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

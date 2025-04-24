@@ -1,0 +1,95 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color:transparent;
+}
+
+.container {
+    margin-left: 15%;
+    padding: 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#loading {
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.employee-infor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.profile-container {
+    padding: 30px 40px;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+}
+
+.avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#employee-name {
+    margin: 20px 0 5px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+}
+
+#employee-role {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #777;
+    text-transform: uppercase; /* <-- in hoa */
+    letter-spacing: 1px;
+}
+
+.profile-info {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.profile-info strong {
+    color: #333;
+}
+
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#resetPasswordBtn {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+#resetPasswordBtn:hover {
+    background-color: #0056b3;
+}

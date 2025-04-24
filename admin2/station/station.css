@@ -1,0 +1,148 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+.navbar{
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.nav-container{
+  display:flex;
+  gap:40px;
+  padding:18px 60px;
+  align-items:center;
+}
+
+.nav-item{
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+/* ======= Dropdown ======= */
+.dropdown{position:relative}
+.dropbtn{background:none;border:none;cursor:pointer}
+
+.dropdown-content{
+  list-style:none;
+  position:absolute;
+  left:0;
+  top:100%;
+  background:#111;
+  width:300px;
+  padding:25px 35px;
+  display:none;
+  flex-direction:column;
+  gap:20px;
+}
+
+.dropdown-content a{
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  text-decoration:none;
+  transition:opacity .2s;
+}
+
+.dropdown-content a:hover{opacity:.7}
+
+.plus{
+  margin-right:10px;
+  font-weight:900;
+}
+
+/* ======= Hover hiệu ứng ======= */
+.dropdown:hover .dropdown-content{
+  display:flex;
+}
+
+body{
+  font-family: 'Inter';
+}
+.location-info{
+  max-width:1200px;
+  margin: 50px auto;
+  padding:70px ;
+  color:#333;
+}
+
+.location-info h2{
+  font-size:24px;
+  font-weight:bold;
+  margin: 10px 0;
+  text-align:left;
+}
+
+.address{
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom:50px;
+}
+
+.address i{
+  font-size: 18px;
+  color:#ff4e38;
+}
+
+.map-wrapper{
+  width:100%;
+  height:500px;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(171, 105, 5, 0.499);
+}
+
+.map-wrapper iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.nearby-title{
+  padding-top: 50px;
+}
+
+.nearby-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr; 
+  gap: 0px 80px;
+}
+
+@media(max-width: 768px){
+  .nearby-grid{grid-template-columns:1fr}
+}
+
+.nearby-item h3{
+  font-size:18px;
+  font-weight:bold;
+  padding-bottom:10px;
+  display:flex;
+  align-items:flex-start;
+  text-align:justify;
+  gap: 10px;
+}
+
+
+.nearby-item i{
+  font-size: 25px;
+  color:#f2a40af0;
+  margin-top: 10px;
+}
+
+.nearby-item p{
+  padding-bottom: 25px;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: justify;
+}
+
+.nearby-item{position:relative;padding-top:8px}
+.nearby-item:before{
+  content:\"\";position:absolute;top:0;left:40px;
+  width:50px;height:2px;background:#000;
+}

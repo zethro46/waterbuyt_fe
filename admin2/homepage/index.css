@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+nav a {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.hero {
+    height: 100vh;
+    background: url('images/background.png') no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 6px 8px rgba(0,0,0,1);
+}
+.hero h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 6px 8px rgba(0,0,0,1);
+    padding-top: 10px;
+}
+
+.booking-process {
+    text-align: center;
+    padding: 25px 20px;
+}
+.booking-process h2 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 25px 0px;
+}
+.step {
+    width: 240px;
+    text-align: center;
+}
+.step i {
+    font-size: 30px;
+    color: #f2a40af0;
+    margin-bottom: 10px;
+}
+.step h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.step p {
+    font-size: 18px;
+    max-width: 220px;
+    color: #666;
+}
+.note {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #0088ff;
+    font-style: italic;
+}
+
+.stations {
+    text-align: center;
+    padding: 40px 20px;
+}
+.station-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.station-tab {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+}
+.station-tab.active {
+    border-bottom: 3px solid #f2a40af0;
+}
+.station-content {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 80%;
+    padding: 20px 0px;
+    margin: auto;
+    text-align: left;
+}
+.station-content img {
+    width: 500px;
+    border-radius: 10px;
+}
+.station-info {
+    max-width: 500px;
+}
+.station-info h3 {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #222;
+}
+.station-info p {
+    font-size: 20px;
+    color: #555;
+}
+.detail-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #f2a40af0;
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.detail-btn:hover {
+    background: #f2a40a;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 30px;
+}
+.footer-container {
+    display: flex;
+    align-items: center;
+}
+.footer-logo {
+    width: 300px;
+    margin-right: 20px;
+}
+.footer-info {
+    list-style: none;
+    padding: 20px 50px;
+}
+.footer-info li {
+    font-size: 20px;
+    margin-bottom: 10px;
+}

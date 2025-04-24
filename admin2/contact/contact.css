@@ -1,0 +1,95 @@
+
+.contact-wrapper{
+    max-width:1200px;
+    margin:40px auto 80px;
+    padding:180px 0px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Inter';
+  }
+  
+  @media(max-width:600px){
+    .contact-wrapper{grid-template-columns:1fr} 
+  }
+  
+
+.contact-info h1{
+    font-size:36px;
+    margin-bottom:10px
+}
+.company{
+    font-weight:bold;
+    font-size: 18px;
+    margin-bottom:40px;
+    color:#666}
+  
+.contact-info h3{
+    font-size:18px;
+    margin: 10px 0px 10px;
+    color:#666;
+}
+.hotline{
+    font-size:36px;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+  
+.info-grid{
+    display:grid;
+    margin-bottom:40px;
+}
+
+.info-grid h3{
+    font-size:18px;
+    margin-bottom:0px;
+    color:#666;
+}   
+.info-grid p{
+    font-size: 18px;
+    line-height:1.5;
+}
+  
+  
+  .contact-form form{
+    display:flex;
+    flex-direction:column;
+    gap: 40px;
+  }
+  
+  label{
+    display:flex;
+    flex-direction:column;
+    font-size:14px;
+    color:#666;
+  }
+  
+  input,
+  textarea{
+    border:none;
+    border-bottom:1px solid #b3b3b3;
+    padding:10px 0px;
+    font-size:14px;
+    outline:none;
+    transition:border-color .2s;
+  }
+  input:focus,
+  textarea:focus{border-bottom-color:#f2a40af0}
+  
+  button{
+    align-self:flex-start;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#f2a40af0;       
+    color:#000;
+    border:none;
+    padding:12px 28px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    border-radius:2px;
+    transition:filter .2s;
+  }
+  button:hover{filter:brightness(0.8)}
+  button i{font-size:14px}
+  

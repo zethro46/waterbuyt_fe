@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thống kê</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/styles/thongke.css">
+  <link rel="stylesheet" href="/admin/assets/styles/sidebar.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="header">
+    <a href="/admin/pages/thongke.html">
+      <div class="logo">
+        <img src="/admin/assets/images/logo_waterbuyt.png" alt="Waterbuyt Logo">
+      </div>
+    </a>
+    <div class="header-title">Thống kê doanh thu</div>
+  </header>
+
+  <!-- Nội dung chính -->
+  <div class="layout-container ">
+    <!-- Sidebar -->
+    <div id="sidebar" ></div>
+    <script>
+      fetch('/admin/components/sidebar.html') <!-- Cập nhật đường dẫn -->
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('sidebar').innerHTML = data;
+          const menuHeaders = document.querySelectorAll('.menu-header');
+          menuHeaders.forEach(header => {
+            header.addEventListener('click', function () {
+              const submenu = this.nextElementSibling;
+              if (submenu) {
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+              }
+            });
+          });
+        });
+    </script>
+
+    <!-- Main Content -->
+    <main class="main-content p-6 w-full">
+      <!-- Thống kê theo ngày -->
+      <div class="bg-white rounded shadow p-6 my-6">
+        <h2 class="text-xl font-bold mb-2">Thống kê doanh thu theo ngày</h2>
+        <input type="date" id="revenueDateInput" class="border p-2 rounded" />
+        <button onclick="fetchDailyRevenue()" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Xem</button>
+        <p class="mt-2">Ngày: <span id="selectedDate">--</span></p>
+        <p>Doanh thu: <span id="dailyRevenue">--</span></p>
+      </div>
+    
+      <!-- Thống kê theo tháng -->
+      <div class="bg-white rounded shadow p-6 my-6">
+        <h2 class="text-xl font-bold mb-2">Thống kê doanh thu theo tháng</h2>
+        <input type="month" id="revenueMonthInput" class="border p-2 rounded" />
+        <button onclick="fetchMonthlyRevenue()" class="ml-2 px-4 py-2 bg-green-600 text-white rounded">Xem</button>
+        <p class="mt-2">Tháng: <span id="selectedMonth">--</span></p>
+        <p>Doanh thu: <span id="monthlyRevenue">--</span></p>
+      </div>
+    
+      <!-- Biểu đồ doanh thu -->
+      <div class="bg-white rounded shadow p-6">
+        <h2 class="text-xl font-bold mb-4">Biểu đồ doanh thu theo tháng</h2>
+        <canvas id="monthlyRevenueChart" height="100"></canvas>
+      </div>
+    </main>
+    
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <img src="/admin/assets/images/logo_waterbuyt.png" alt="Logo" class="footer-logo">
+      <ul class="footer-info">
+        <li>Liên hệ: 0123 456 789</li>
+        <li>Email: contact@waterbuyt.vn</li>
+        <li>Địa chỉ: Thành phố Hồ Chí Minh</li>
+      </ul>
+    </div>
+  </footer>
+
+
+  <script type="module" src="/admin/js/thongke.js"></script>
+</body>
+</html>

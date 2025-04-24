@@ -1,0 +1,50 @@
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to bottom, #0d776e, #3e72b6);
+    color: white;
+    font-family: sans-serif;
+    padding: 10px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu-item {
+    display: block; /* Đảm bảo các thẻ <a> hiển thị như block để dễ dàng click */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ <a> */
+    color: white; /* Đảm bảo màu chữ phù hợp */
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-group {
+    margin-top: 15px;
+}
+
+.menu-header {
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submenu {
+    padding-left: 15px;
+    display: none;
+}
+
+.submenu .menu-item {
+    font-size: 14px;
+}
+
+.bg-yellow-400 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(251, 191, 36, var(--tw-bg-opacity));
+}
