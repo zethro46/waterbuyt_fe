@@ -19,7 +19,7 @@ document.getElementById("sidebar").innerHTML = `
                 Profile
             </a></li>
 
-        <li><a href="/common/pages/index.html" class="logout-link">
+        <li><a href="/admin2/homepage/index.html" class="logout-link">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 Log out
             </a></li>
@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const logoutLink = document.querySelector("#sidebar .logout-link");
     if (logoutLink) {
         logoutLink.addEventListener("click", function(event) {
-            event.preventDefault(); // Ngăn chuyển hướng mặc định
-            localStorage.clear(); // Xóa toàn bộ localStorage
-            window.location.href = "/common/pages/index.html"; // Chuyển hướng về trang index
+            event.preventDefault(); 
+            localStorage.clear(); 
+            window.location.href = "/common/pages/index.html"; 
         });
     }
 });

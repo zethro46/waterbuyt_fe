@@ -465,27 +465,27 @@ display: none;
 
 /* Ghế trống */
 .seat:not(.selected):not(.unavailable) {
-  background-color: #b7f0ba; /* xanh nhạt */
+  background-color: #b7f0ba; 
   color: #2e7d32;
   border: 2px solid #2e7d32;
 }
 
 /* Ghế không trống */
 .seat.unavailable {
-  background-color: #8a8a8a; /* đỏ nhạt */
+  background-color: #8a8a8a; 
   color: #c62828;
   cursor: not-allowed;
 }
 
 /* Ghế đang chọn */
 .seat.selected {
-  background-color: #4fc3f7; /* xanh dương nhạt */
+  background-color: #4fc3f7; 
   color: white;
   border: 2px solid #0288d1;
 }
 
 .submit-booking-btn:disabled {
-  background-color: #ccc; /* màu xám khi bị disable */
+  background-color: #ccc; 
   color: #666;
   cursor: not-allowed;
   pointer-events: none;
