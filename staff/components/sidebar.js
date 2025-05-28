@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         logoutLink.addEventListener("click", function(event) {
             event.preventDefault(); 
             localStorage.clear(); 
-            window.location.href = "/common/pages/index.html"; 
+            window.location.href = "/admin2/homepage/index.html"; 
         });
     }
 });
