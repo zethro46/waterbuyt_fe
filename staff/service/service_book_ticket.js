@@ -9,7 +9,7 @@ const MAX_SEATS = 6;
 
 let PRICE_PER_SEAT;
 
-fetch(`${API_BASE_URL}/tickets/idPrice/3`, {
+fetch(`${API_BASE_URL}/tickets/latest?categoryId=3`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ fetch(`${API_BASE_URL}/tickets/idPrice/3`, {
 })
   .then(res => res.json())
   .then(data => {
-    PRICE_PER_SEAT = data.price;
+    PRICE_PER_SEAT = data;
     console.log('Giá ghế lấy từ API:', PRICE_PER_SEAT);
 
     // Bạn có thể tiếp tục xử lý ở đây
@@ -266,7 +266,7 @@ async function renderTrips(trips) {
                 chooseSeatBtn.addEventListener('click', (event) => {
                 openSeatModal(event.currentTarget);
             });
-            renderSeats(trip.tripId, trip.shipId, trip.startStationId, trip.endStationId);
+            renderSeats(trip.tripId, trip.shipId, startStationId, endStationId);
 
             const continueButton = document.getElementById(`continue-btn-${trip.tripId}`);
             const backSelecteSeatBtn = document.getElementById(`back-to-seat-${trip.tripId}`);
@@ -528,7 +528,14 @@ async function renderTrips(trips) {
                     body: JSON.stringify({ tripId, startStationId, endStationId })
                 });
                 const emptySeats = await emptySeatsResponse.json();
+                console.log("Empty seats:", emptySeats);
+                console.log("TripidTripid", tripId);
+                console.log("startID:", startStationId);
+                console.log("endID:", endStationId);
                 const emptySeatIds = emptySeats.map(seat => seat.seatId);
+                
+
+                
         
                 // Sắp xếp lại: nhóm theo số hàng
                 const rows = 9, cols = 4;

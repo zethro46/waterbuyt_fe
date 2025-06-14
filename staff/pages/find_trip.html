@@ -44,7 +44,10 @@
 
                 <div class="booking-form-group" id="date-picker">
                     <label>Ngày khởi hành</label>
-                    <input type="date" value="2025-04-15">
+                    <input type="date" id="currDate">
+                    <script>
+                      document.getElementById("currDate").valueAsDate = new Date();
+                    </script>
                     <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
                 </div>
 

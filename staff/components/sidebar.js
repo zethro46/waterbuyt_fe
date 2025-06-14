@@ -11,7 +11,7 @@ document.getElementById("sidebar").innerHTML = `
             
         <li><a href="/staff/pages/passenger.html">
                 <i class="fa-solid fa-user-group"></i>
-                Passenger
+                Booking Details
             </a></li>
 
         <li><a href="/staff/pages/profile.html">
@@ -21,7 +21,7 @@ document.getElementById("sidebar").innerHTML = `
 
         <li><a href="/admin2/homepage/index.html" class="logout-link">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Log out
+                Log Out
             </a></li>
     </ul>
 `;

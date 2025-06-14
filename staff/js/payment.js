@@ -48,9 +48,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Lỗi fetch danh sách bến:", error);
   }
 
+
+  
   // Render thông tin vé
   const ticketInfoEl = document.getElementById("ticket-info");
+  
   if (ticketInfoEl) {
+    const calculateCategoryId = (dobString) => {
+      const birth = new Date(dobString);
+      const age = new Date().getFullYear() - birth.getFullYear();
+      if (age < 5) return 1;
+      if (age > 80) return 2;
+      return 3;
+    };
+
+    // Lấy danh sách categoryRequest = [{ idx, categoryId }]
+    const categoryRequests = bookingData.details.map((p, i) => ({
+      index: i,
+      categoryId: calculateCategoryId(p.dob)
+    }));
+
+    // Fetch giá vé tương ứng từng category
+    const pricePromises = categoryRequests.map(({ categoryId }) =>
+      fetch(`${API_BASE_URL}/tickets/latest?categoryId=${categoryId}`)
+        .then(res => {
+          if (!res.ok) throw new Error(`Không thể lấy giá cho categoryId=${categoryId}`);
+          return res.text(); // Lấy chuỗi số trả về
+        })
+        .then(text => Number(text)) // Ép thành số
+    );
+
+
+    // Chờ lấy hết giá vé
+    let prices = [];
+    try {
+      prices = await Promise.all(pricePromises);
+      console.log("Giá vé theo từng hành khách (theo category):", prices);
+    } catch (err) {
+      console.error("Lỗi khi fetch giá vé:", err);
+      ticketInfoEl.innerHTML = `<p>Có lỗi khi lấy thông tin giá vé. Vui lòng thử lại.</p>`;
+      return;
+    }
+
+    // Tính tổng
+    const total = prices.reduce((sum, price) => sum + price, 0);
     ticketInfoEl.innerHTML = `
                     <div class="ticket-header">
                         <img src="/common/assets/images/logo_waterbuyt_fit.png" alt="Company Logo">
@@ -83,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                     </ul>
                     <p><strong>Tổng tiền:</strong> ${(
-                      bookingData.seatIds?.length * 15000
+                      total
                     ).toLocaleString("vi-VN")} VNĐ</p>
                 `;
   } else {

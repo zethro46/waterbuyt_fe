@@ -5,6 +5,7 @@ const token = localStorage.getItem('token');
 
 document.addEventListener("DOMContentLoaded", function() {
     fetchTickets();
+    initTicketFilters();
 });
 
 async function fetchTickets() {
@@ -87,18 +88,18 @@ async function loadTickets(tickets) {
             fetchStationName(ticket.startStationId),
             fetchStationName(ticket.endStationId)
         ]);
-
+        
         tr.innerHTML = `
             <td>${ticket.idTicket ?? ''}</td>
             <td>${ticket.customerName ?? ''}</td>
             <td>${startStationName}</td>
             <td>${endStationName}</td>
-            <td>${ticket.startDepartureTime} ${ticket.departureDate}</td>
+            <td>${ticket.startDepartureTime} ${formatDateOnly(ticket.departureDate)}</td>
             <td>${ticket.price !== undefined && ticket.price !== null ? ticket.price.toLocaleString('vi-VN') + ' VND' : ''}</td>
             <td>${ticket.seatQuantity ?? ''}</td>
             <td>${ticket.paymentMethod ?? ''}</td>
-            <td>${ticket.bookingTime ? formatBookingTime(ticket.bookingTime) : ''}</td>
-            <td>${staffName}</td>
+            <td>${ticket.bookingTime ? formatTime(ticket.bookingTime) : ''}</td>
+            <td>${ticket.staffName ?? ''}</td>
             <td><button class="icon-button" id="viewDetailsBtn-${ticket.idTicket}">
                 <i class="fa-solid fa-circle-info"></i>
                 </button>
@@ -112,9 +113,14 @@ async function loadTickets(tickets) {
     }
 }
 
-function formatBookingTime(datetimeString) {
+function formatTime(datetimeString) {
     const date = new Date(datetimeString);
     return date.toLocaleString('vi-VN'); 
+}
+
+function formatDateOnly(dateStr) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('vi-VN');  // Trả về: 4/1/2025
 }
 
 
@@ -167,7 +173,7 @@ function showPopup(passengers) {
         passengerDiv.innerHTML = `
             <p><strong>Họ tên:</strong> ${passenger.fullName}</p>
             <p><strong>Năm sinh:</strong> ${passenger.birthYear}</p>
-            <p><strong>Ghế:</strong> ${passenger.seatIds.join(", ")}</p>
+            <p><strong>Ghế:</strong> ${passenger.seatNumbers.join(", ")}</p>
             <hr>
         `;
         passengerInfoDiv.appendChild(passengerDiv);
@@ -179,3 +185,80 @@ function showPopup(passengers) {
 function closePopup() {
     popup.style.display = "none";
 }
+
+async function initTicketFilters() {
+  const searchInput = document.getElementById("search-general");
+  const filterStart = document.getElementById("filter-start");
+  const filterEnd = document.getElementById("filter-end");
+  const filterDate = document.getElementById("filter-date");
+  const ticketList = document.getElementById("ticket-list");
+
+  try {
+        const response = await fetch(`${API_BASE_URL}/stations`); 
+        const stations = await response.json();
+
+        // Xóa hết option cũ (chừa lại dòng đầu)
+        filterStart.length = 1;
+        filterEnd.length = 1;
+
+        stations.forEach(station => {
+            if (station.name) { // Chỉ thêm nếu có tên
+                const option1 = document.createElement('option');
+                option1.value = station.name;
+                option1.textContent = station.name;
+                filterStart.appendChild(option1);
+
+                const option2 = document.createElement('option');
+                option2.value = station.name;
+                option2.textContent = station.name;
+                filterEnd.appendChild(option2);
+            }
+        });
+
+    } catch (error) {
+        console.error('Lỗi khi lấy danh sách bến:', error);
+    }
+
+  if (!searchInput || !filterStart || !filterEnd || !filterDate || !ticketList) return;
+
+  const filterTable = () => {
+    const rows = ticketList.querySelectorAll("tr");
+    const keyword = searchInput.value.toLowerCase();
+    const startVal = filterStart.value.toLowerCase();
+    const endVal = filterEnd.value.toLowerCase();
+    const dateFil = filterDate.value;
+    const dateVal = dateFil ? formatDateOnly(dateFil) : null;
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+      const code = cells[0]?.textContent.toLowerCase();
+      const name = cells[1]?.textContent.toLowerCase();
+      const start = cells[2]?.textContent.toLowerCase();
+      const end = cells[3]?.textContent.toLowerCase();
+      const date = cells[4]?.textContent.split(" ")[1];
+
+      const match = (!keyword || name.includes(keyword) || code.includes(keyword)) &&
+                    (!startVal || start === startVal) &&
+                    (!endVal || end === endVal) &&
+                    (!dateVal || date === dateVal);
+
+      row.style.display = match ? "" : "none";
+    });
+  };
+
+  [searchInput, filterStart, filterEnd, filterDate].forEach(el => {
+    el.addEventListener("input", filterTable);
+    el.addEventListener("change", filterTable);
+  });
+
+  const clearBtn = document.getElementById("clear-filters");
+
+    if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        filterStart.value = "";
+        filterEnd.value = "";
+        filterDate.value = "";
+        filterTable(); // Hiển thị lại toàn bộ
+    });
+    }
+} 
