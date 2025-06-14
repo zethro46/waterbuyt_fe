@@ -281,11 +281,12 @@ input[type="date"]::-moz-focus-inner {
   vertical-align: middle;
 }
 
+/*
 .available { background: #e0e0e0; }
 .selected { background: #4caf50; }
 .unavailable { background: #ccc; }
 .disabled { background: #eee; }
-
+*/
 .notification {
   background: #fff3cd;
   border: 1px solid #ffeeba;
@@ -473,7 +474,7 @@ display: none;
 /* Ghế không trống */
 .seat.unavailable {
   background-color: #8a8a8a; 
-  color: #c62828;
+  color: #efe7e7;
   cursor: not-allowed;
 }
 
