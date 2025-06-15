@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function createBooking(paymentMethod, bookingData) {
   const bookingPayload = {
     fullname: String(bookingData.fullname),
-    birthYear: Number(bookingData.bookerBOD),
+    birthYear: Number(bookingData.bookerDOB),
     phone: String(bookingData.phone),
     email: String(bookingData.email),
     nationality: String(bookingData.nationality),

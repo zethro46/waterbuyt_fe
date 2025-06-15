@@ -4,7 +4,7 @@ const API_BASE_URL = `${CONFIG.BASE_URL}/api/admin/login`;
 
 const routes = {
     admin: [
-        { path: '/admin/pages/thongke.html' },
+        { path: '/admin3/pages/dashboard.html' },
     ],
     staff: [
         { path: '/staff/pages/find_trip.html'},

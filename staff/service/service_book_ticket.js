@@ -67,6 +67,14 @@ async function fetchStations() {
 // Đã có fetchStations() như bạn rồi
 
 document.getElementById('search-trip').addEventListener('click', async function () {
+    // Xóa bookingData cũ nếu có
+    const oldBookingKey = Object.keys(localStorage).find((key) =>
+        key.startsWith("bookingData_")
+    );
+    if (oldBookingKey) {
+        localStorage.removeItem(oldBookingKey);
+        console.log(`Đã xóa thông tin booking cũ: ${oldBookingKey}`);
+    }
     const departureSelect = document.getElementById('route-departure');
     const destinationSelect = document.getElementById('route-destination');
     const dateInput = document.querySelector('#date-picker input');

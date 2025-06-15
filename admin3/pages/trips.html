@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý chuyến đi</title>
+  <link rel="stylesheet" href="/admin3//vendor/adminlte/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin3//vendor/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin3//vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/admin2/homepage/index.html" class="nav-link text-danger" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Content -->
+    <div class="content-wrapper p-4">
+      <h3>Quản lý chuyến đi</h3>
+
+      <!-- Hàng 1: Chỉ chứa nút cập nhật trạng thái -->
+<div class="d-flex justify-content-end mb-2">
+  <button id="btnUpdateTripStatus" class="btn btn-warning">
+    <i class="fas fa-sync-alt"></i> Cập nhật trạng thái chuyến
+  </button>
+</div>
+
+<!-- Hàng 2: Bộ lọc trạng thái + ngày + nút tạo -->
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+  <div class="d-flex flex-wrap align-items-center gap-2">
+    <!-- Nút lọc trạng thái -->
+    <div class="btn-group" role="group">
+      <button class="btn btn-secondary filter-btn" data-status="">Tất cả</button>
+      <button class="btn btn-outline-primary filter-btn" data-status="PENDING">Đang chờ</button>
+      <button class="btn btn-outline-warning filter-btn" data-status="IN_PROGRESS">Đang đi</button>
+      <button class="btn btn-outline-success filter-btn" data-status="COMPLETED">Hoàn thành</button>
+      <button class="btn btn-outline-danger filter-btn" data-status="CANCELLED">Đã hủy</button>
+    </div>
+
+    <!-- Lọc theo ngày -->
+    <div class="form-inline">
+      <input type="date" id="filterDate" class="form-control mr-2">
+      <button id="btnFilterDate" class="btn btn-info mr-2">Lọc theo ngày</button>
+      <button id="btnClearDate" class="btn btn-secondary">Xóa lọc ngày</button>
+    </div>
+  </div>
+
+  <!-- Nút tạo chuyến -->
+  <div class="d-flex gap-2">
+    <button class="btn btn-success" data-toggle="modal" data-target="#generateModal">+ Tạo chuyến</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#manualTripModal">+ Tạo chuyến thủ công</button>
+  </div>
+</div>
+
+
+
+      <!-- Bảng chuyến đi -->
+      <div class="table-responsive" style="max-height: calc(100vh - 320px); overflow-y: auto;">
+        <table id="tripTable" class="table table-bordered table-hover mb-0">
+          <thead class="thead-light" style="position: sticky; top: 0; z-index: 1;">
+            <tr>
+              <th>Thời gian</th>
+              <th>Ngày đi</th> 
+              <th>Tuyến</th>
+              <th>Tàu</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+
+      <!-- Modal hủy chuyến -->
+      <div class="modal fade" id="cancelModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="cancelForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Lý do hủy chuyến</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" id="cancelTripId">
+                <textarea id="cancelReason" class="form-control" placeholder="Nhập lý do..." required></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Xác nhận hủy</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal tạo chuyến -->
+      <div class="modal fade" id="generateModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="generateForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Chọn ngày để tạo chuyến</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <input type="date" id="generateDate" class="form-control" required min="">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Tạo chuyến</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal tạo chuyến thủ công -->
+      <div class="modal fade" id="manualTripModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="manualTripForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Tạo chuyến đi thủ công</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="routeSelect">Tuyến</label>
+                  <select id="routeSelect" class="form-control" required>
+                    <option value="2">Bạch Đằng → Linh Đông</option>
+                    <option value="1">Linh Đông → Bạch Đằng</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="shipSelect">Tàu</label>
+                  <select id="shipSelect" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                  <label for="manualDate">Ngày khởi hành</label>
+                  <input type="date" id="manualDate" class="form-control" required min="">
+                </div>
+                <div class="form-group">
+                  <label for="manualTime">Giờ khởi hành</label>
+                  <input type="time" id="manualTime" class="form-control" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Tạo chuyến</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/admin3//vendor/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin3//vendor/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin3//vendor/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin3//vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin3//vendor/adminlte/js/adminlte.min.js"></script>
+    <script type="module" src="/admin3//js/trips.js"></script>
+    <script src="/admin3/assets/js/inject-sidebar.js"></script>
+</body>
+
+</html>
