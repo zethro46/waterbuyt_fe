@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/staff/components/sidebar.css">
+    <link rel="stylesheet" href="/staff/assets/styles/passenger.css">
+</head>
+<body>
+    <div id="sidebar"></div>
+
+    <div class="container">
+        <h1>Danh Sách Đặt Vé</h1>
+        <div class="filter-bar">
+            <input type="text" id="search-general" placeholder="Tìm tên hoặc mã đặt vé...">
+            <select id="filter-start">
+                <option value="">Nơi đi</option>
+                <option value="Bạch Đằng">Bạch Đằng</option>
+                <option value="Linh Đông">Linh Đông</option>
+                <!-- Thêm các bến khác nếu cần -->
+            </select>
+            <select id="filter-end">
+                <option value="">Nơi đến</option>
+                <option value="Bạch Đằng">Bến Bạch Đằng</option>
+                <option value="Linh Đông">Bến Linh Đông</option>
+            </select>
+            <input type="date" id="filter-date">
+            <button id="clear-filters">Xóa lọc</button>
+
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Đặt Vé</th>
+                        <th>Khách Hàng</th>
+                        <th>Bến Đi</th>
+                        <th>Bến Đến</th>
+                        <th>Thời Gian Đi</th>
+                        <th>Tổng tiền</th>
+                        <th>SL Ghế</th>
+                        <th>HTTT</th>
+                        <th>Thời Gian Đặt</th>
+                        <th>Nhân Viên</th>
+                        <th>Chi Tiết</th>
+                    </tr>
+                </thead>
+            
+                <tbody id="ticket-list"></tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+
+    <script type="module" src="/staff/components/sidebar.js"></script>
+    <script type="module" src="/staff/js/passenger.js"></script>
+</body>
+</html>

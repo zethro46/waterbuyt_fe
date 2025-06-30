@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <title>
+            Book Ticket
+        </title>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staff/components/sidebar.css">
+        <link rel="stylesheet" href="/staff/assets/styles/find_trip.css">
+    </head>
+    <body>
+        <div id="sidebar"></div>
+        <div class="container">
+            <div class="booking-header">
+                <h1>Đặt vé cho khách hàng</h1>
+            </div>
+            <div class="booking-form">
+                <div class="booking-form-group" id="departure">
+                    <label for="route-departure">Nơi đi</label>
+                    <select name="route-departure" id="route-departure">
+                        <option value="route-0">Chọn nơi đi</option>
+                        <option value="route-1">Bến Bạch Đằng</option>
+                        <option value="route-2">Bến Thanh Đa</option>
+                        <option value="route-3">Bến Linh Đông</option>
+                    </select>
+                    <div class="icon-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div>
+
+                <div class="booking-form-group" id="destination">
+                    <label for="route-destination">Nơi đến</label>
+                    <select name="route-destination" id="route-destination">
+                        <option value="route-0">Chọn nơi đến</option>
+                        <option value="route-1">Bến Bạch Đằng</option>
+                        <option value="route-2">Bến Thanh Đa</option>
+                        <option value="route-3">Bến Linh Đông</option>
+                    </select>
+                    <div class="icon-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div>
+
+                <div class="booking-form-group" id="date-picker">
+                    <label>Ngày khởi hành</label>
+                    <input type="date" id="currDate">
+                    <script>
+                      document.getElementById("currDate").valueAsDate = new Date();
+                    </script>
+                    <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+                </div>
+
+                <button class="search-btn" id="search-trip">TÌM VÉ</button>
+            </div>
+
+            <div class="message">
+                Vui lòng kiểm tra Ngày Khởi Hành trước khi hoàn tất đặt vé
+            </div>
+
+            <div class="result-searching" id="result-trips" style="display: none;">
+                <div class="trip-card">
+                      
+                
+                    <!-- Modal nằm trong card -->
+                    <div class="modal">
+                        <div class="modal-content" id="model-content">
+                            <span class="close" id="close-x"><i class="fa-solid fa-xmark"></i></span>
+                            <h2>Chọn chỗ ngồi</h2>
+                            <div class="legend">
+                                <div><span class="seat available"></span> Còn trống</div>
+                                <div><span class="seat selected"></span> Đang chọn</div>
+                                <div><span class="seat unavailable"></span> Không bán</div>
+                              </div>
+                          
+                              <div id="notification" class="notification hidden"></div>
+                          
+                              <div id="seat-map" class="seat-map"></div>
+                          
+                              <div class="summary">
+                                <div>
+                                  <strong>Số ghế:</strong> <span id="seat-list">Vui lòng chọn ít nhất 1 chỗ ngồi</span>
+                                  <span class="note">(Tối đa 6 ghế)</span>
+                                </div>
+                                <div class="right">
+                                  <span><strong>Tổng cộng:</strong> <span id="total-price">0</span> đ</span>
+                                  <button id="continue-btn" disabled>Tiếp tục</button>
+                                </div>
+                              </div>
+                        </div>
+                      
+                      <div class="passenger-infor" id="passenger-infor">
+                        <h2>Thông tin hành khách</h2>
+                        <div id="passenger-list"></div>
+
+                        <h2>Thông tin người đặt vé</h2>
+                        <div class="booker-info">
+                          <div class="passenger-form-group">
+                            <label>Họ tên người đặt vé</label>
+                            <input type="text" id="booker-name" required>
+                          </div>
+                          <div class="passenger-form-group">
+                            <label>Số điện thoại</label>
+                            <input type="text" id="booker-phone" required>
+                          </div>
+                          <div class="passenger-form-group">
+                            <label>Email</label>
+                            <input type="email" id="booker-email" required>
+                          </div>
+                          <div class="passenger-form-group">
+                            <label>Giới tính</label>
+                            <select id="booker-gender" required>
+                              <option value="">Chọn giới tính</option>
+                              <option value="male">Nam</option>
+                              <option value="female">Nữ</option>
+                              <option value="other">Khác</option>
+                            </select>
+                          </div>
+                          <div class="passenger-form-group">
+                            <label>Quốc tịch</label>
+                            <input type="text" id="booker-nationality" required>
+                          </div>
+                        </div>
+
+                        <div class="btn-group">
+                          <button id="back-to-seat" class="back-btn">Quay lại chọn ghế</button>
+                          <button id="submit-booking" class="submit-booking-btn">Xác nhận đặt vé</button>
+                        </div>
+                      </div>
+
+                    </div>
+
+           
+                </div>
+                
+            </div>
+        </div>
+
+        <script src="/staff/components/sidebar.js"></script>
+        <script type="module" src="/staff/service/service_book_ticket.js"></script>
+    </body>
+</html>

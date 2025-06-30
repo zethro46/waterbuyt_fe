@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+.container {
+    margin-left: 15%;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #3f3f3f; 
+    margin-bottom: 30px;
+  }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.icon-button i {
+    color: #4BBDC3;
+    font-size: 18px;
+}
+
+.icon-button:hover i {
+    color: #095255;
+}
+
+
+th, td {
+    font-size: 12px;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th{
+    font-size: 11px;
+}
+thead {
+    background-color: #FFBD59; /* Màu nền của thead */
+    color: rgb(43, 43, 43); /* Màu chữ trong thead */
+    position: sticky;
+}
+tbody {
+    overflow-y: auto;
+}
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Nội dung popup */
+.popup-content {
+  background-color: #fefefe;
+  position: absolute;
+  top: 50%;
+  left: calc(15% + 50% * 0.85); /* căn giữa phần 85% */
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888;
+
+  width: 600px;
+  height: 400px;
+
+  overflow: auto; /* Cho phép scroll nếu nội dung dài */
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+
+/* Nút đóng */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+
+.filter-bar input[type="text"],
+.filter-bar input[type="date"],
+.filter-bar select {
+  padding: 0.5rem;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 180px;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#clear-filters {
+  padding: 8px 16px;
+  background-color: #FFBD59;; /* màu xanh dương */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+#clear-filters:hover {
+  background-color: #58390a;;
+}
+
+.table-wrapper {
+  max-height: 70vh; /* hoặc bất kỳ chiều cao cố định nào bạn muốn */
+  overflow-y: auto;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #FFBD59;
+  z-index: 1;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/staff/components/sidebar.css">
+        <link rel="stylesheet" href="/staff/assets/styles/profile.css">
+    </head>
+
+    <body>
+        <div id="sidebar"></div>
+
+        <div class="container">
+            <div id="loading">Đang tải...</div>
+
+            <div class="employee-infor">
+                <div class="profile-container" style="display: none;">
+                    <div class="avatar">
+                    <img src="/common/assets/images/avt.png" alt="Avatar" id="avatar">
+                    </div>
+                    <h1 id="employee-name">Employee Name</h1>
+                    <h2 id="employee-role">Role</h2>
+                    <div class="profile-info">
+                        <p><strong>Identity Number:</strong> <span id="identityNumber"></span></p>
+                        <p><strong>Birth Date:</strong> <span id="birthDate"></span></p>
+                        <p><strong>Gender:</strong> <span id="gender"></span></p>
+                        <p><strong>Phone:</strong> <span id="phone"></span></p>
+                        <p><strong>Email:</strong> <span id="email"></span></p>
+                        <p><strong>Address:</strong> <span id="address"></span></p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="resetPasswordBtn">Reset Password</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <script type="module" src="/staff/components/sidebar.js"></script>
+        <script type="module" src="/staff/js/profile.js"></script>
+    </body>
+</html>

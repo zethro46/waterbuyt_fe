@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán</title>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <link rel="stylesheet" href="/admin2/book-ticket/payment.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div class="main-content">
+        <div class="payment-container">
+            <h2>Chọn phương thức thanh toán</h2>
+            <form id="payment-form">
+                <label>
+                    <input type="radio" name="payment-method" value="QR"> Quét mã QR
+                </label>
+                <button type="submit" class="btn-submit">Xác nhận</button>
+            </form>
+            <div id="qr-container">
+                <h3>Quét mã để thanh toán</h3>
+                    <img id="qr-image" class="qr-code" alt="QR Code">
+            </div>
+            <button id="paid-button">Đã thanh toán</button>
+        </div>
+        <div class="ticket-container" id="ticket-info">
+            <h3>Thông tin vé</h3>
+            <!-- Thông tin vé render bởi JS -->
+        </div>
+    </div>
+    <script src="/admin2/homepage/index.js"></script>
+    <script type="module" src="/admin2/book-ticket/payment.js"></script>
+</body>
+</html>

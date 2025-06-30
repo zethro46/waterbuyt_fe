@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý nhân viên</title>
+
+  <!-- AdminLTE -->
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+
+  <!-- Custom -->
+  <link rel="stylesheet" href="/admin3/assets/css/custom.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="profileIcon" role="button">
+            <i class="fas fa-user-circle fa-lg"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/admin2/homepage/index.html" class="nav-link text-danger" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Content -->
+    <div class="content-wrapper p-4">
+      <h3>Quản lý nhân viên</h3>
+      <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#staffModal">➕ Thêm nhân viên</button>
+
+      <!-- ✅ Bọc bảng trong div có scroll -->
+      <div class="table-responsive" style="max-height: calc(100vh - 300px); overflow-y: auto;">
+        <table id="staffTable" class="table table-bordered table-hover mb-0">
+          <thead class="thead-light" style="position: sticky; top: 0; z-index: 1;">
+            <tr>
+              <th>Họ tên</th>
+              <th>CMND</th>
+              <th>Ngày sinh</th>
+              <th>Giới tính</th>
+              <th>Điện thoại</th>
+              <th>Email</th>
+              <th>Địa chỉ</th>
+              <th>Role</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- Modal Thêm/Sửa nhân viên -->
+    <div class="modal fade" id="staffModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="staffForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Thông tin nhân viên</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="staffId">
+              <input type="text" class="form-control mb-2" id="fullName" placeholder="Họ tên" required>
+              <input type="text" class="form-control mb-2" id="identityNumber" placeholder="CMND/CCCD">
+              <input type="date" class="form-control mb-2" id="birthDate">
+              <select class="form-control mb-2" id="gender">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+              <input type="text" class="form-control mb-2" id="phone" placeholder="Số điện thoại">
+              <input type="email" class="form-control mb-2" id="email" placeholder="Email">
+              <input type="text" class="form-control mb-2" id="address" placeholder="Địa chỉ">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Lưu</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Thông tin cá nhân -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="profileForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Thông tin cá nhân</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="profileId">
+              <input type="text" class="form-control mb-2" id="profileFullName" placeholder="Họ tên" readonly>
+              <input type="text" class="form-control mb-2" id="profileIdentity" placeholder="CMND/CCCD" readonly>
+              <input type="date" class="form-control mb-2" id="profileBirthDate" readonly>
+              <select class="form-control mb-2" id="profileGender" disabled>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+              <input type="text" class="form-control mb-2" id="profilePhone" placeholder="Số điện thoại" readonly>
+              <input type="email" class="form-control mb-2" id="profileEmail" placeholder="Email" readonly>
+              <input type="text" class="form-control mb-2" id="profileAddress" placeholder="Địa chỉ" readonly>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="editBtn">Chỉnh sửa</button>
+              <button type="submit" class="btn btn-success" id="saveBtn" disabled>Lưu</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Tạo tài khoản -->
+    <div class="modal fade" id="createAccountModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="createAccountForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Tạo tài khoản cho nhân viên</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="accountStaffId">
+              <input type="text" class="form-control mb-2" id="accountUsername" placeholder="Tên đăng nhập" required>
+              <input type="password" class="form-control mb-2" id="accountPassword" placeholder="Mật khẩu" required>
+              <input type="password" class="form-control mb-2" id="accountPasswordConfirm"
+                placeholder="Nhập lại mật khẩu" required>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Tạo tài khoản</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/admin3/vendor/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin3/vendor/adminlte/js/adminlte.min.js"></script>
+    <script src="/admin3/assets/js/inject-sidebar.js"></script>
+    <script type="module" src="/admin3/js/staffs.js"></script>
+
+</body>
+
+</html>

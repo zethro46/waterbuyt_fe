@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý giá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <!-- AdminLTE -->
+    <link rel="stylesheet" href="/admin3/vendor/adminlte/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/admin2/homepage/index.html" class="nav-link text-danger" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="content-wrapper p-4">
+            <h3>Quản lý danh mục</h3>
+            <button class="btn btn-primary mb-3" onclick="showAddForm()">
+                <i class="fas fa-plus"></i> Thêm danh mục
+            </button>
+
+            <div class="table-responsive">
+                <table id="categoryTable" class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Mô tả</th>
+                            <th>Trạng thái</th>
+                            <th>Giá vé</th>
+                            <th>Ngày tạo giá</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        
+<!-- Sidebar -->
+  <div id="sidebar-placeholder"></div>
+
+
+        <!-- Modal thêm/sửa -->
+        <div class="modal fade" id="categoryModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="categoryForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Danh mục</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="categoryId">
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <input type="text" class="form-control" id="description" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <input type="text" class="form-control" id="status" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Giá vé</label>
+                                <input type="number" class="form-control" id="price" required>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Lưu</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS dependencies -->
+    <script src="/admin3/vendor/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin3/vendor/adminlte/js/adminlte.min.js"></script>
+    <script src="/admin3/assets/js/inject-sidebar.js"></script>
+    <script src="/admin3/js/category.js"></script>
+
+    <!-- JS xử lý danh mục -->
+
+</body>
+
+</html>

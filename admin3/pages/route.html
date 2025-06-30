@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý tuyến</title>
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/admin2/homepage/index.html" class="nav-link text-danger" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="sidebar-placeholder"></div>
+
+    <div class="content-wrapper p-4">
+      <h3>Quản lý tuyến</h3>
+
+      <!-- Nút tạo tuyến -->
+      <div class="mb-3 text-right">
+        <button class="btn btn-success" data-toggle="modal" data-target="#createRouteModal">+ Tạo tuyến mới</button>
+      </div>
+
+      <!-- Bảng danh sách tuyến -->
+      <div class="table-responsive">
+        <table id="routeTable" class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Bến đi</th>
+              <th>Bến đến</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Modal tạo tuyến -->
+      <div class="modal fade" id="createRouteModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="createRouteForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Tạo tuyến mới</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="startStationSelect">Bến đi</label>
+                  <select id="startStationSelect" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                  <label for="endStationSelect">Bến đến</label>
+                  <select id="endStationSelect" class="form-control" required></select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Tạo</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="/admin3/vendor/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin3/vendor/adminlte/js/adminlte.min.js"></script>
+    <script src="/admin3/js/route.js"></script>
+    <script src="/admin3/assets/js/inject-sidebar.js"></script>
+  </div>
+</body>
+</html>

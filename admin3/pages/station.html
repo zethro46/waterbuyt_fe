@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý trạm</title>
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/css/adminlte.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/admin3/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/admin2/homepage/index.html" class="nav-link text-danger" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Content -->
+    <div class="content-wrapper p-4">
+      <h3>Quản lý trạm</h3>
+
+      <div class="mb-3 text-right">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addModal">+ Thêm trạm</button>
+      </div>
+
+     <!-- Bảng dữ liệu -->
+<div style="max-height: 400px; overflow-y: auto;">
+  <table id="stationTable" class="table table-bordered table-hover">
+    <thead class="thead-light" style="position: sticky; top: 0; background: white; z-index: 1;">
+      <tr>
+        <th>STT</th>
+        <th>Tên trạm</th>
+        <th>Địa chỉ</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+      <!-- Modal thêm -->
+      <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="addForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Thêm trạm mới</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control mb-2" placeholder="Tên trạm" id="name" required>
+                <input type="text" class="form-control mb-2" placeholder="Địa chỉ" id="address" required>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Thêm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal cập nhật -->
+      <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="editForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Cập nhật trạm</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" id="editId">
+                <input type="text" class="form-control mb-2" placeholder="Tên trạm" id="editName" required>
+                <input type="text" class="form-control mb-2" placeholder="Địa chỉ" id="editAddress" required>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/admin3/vendor/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin3/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin3/vendor/adminlte/js/adminlte.min.js"></script>
+    <script type="module" src="/admin3/js/station.js"></script>
+    <script src="/admin3/assets/js/inject-sidebar.js"></script>
+</body>
+
+</html>
