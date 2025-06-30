@@ -47,7 +47,7 @@ Website gồm 3 phân hệ chính:
 
 ## 📑 Tài liệu khác
 - Phần Backend: [Tại đây](https://github.com/NguyenKhangLove/waterbus.git)
-- Báo cáo: [Tại đây](./docs/baocao.dox)
+- Báo cáo: [Tại đây](./docs/baocao.docx)
 
 ## 📄 License
 Dự án phục vụ mục đích học tập và nghiên cứu. Không sử dụng cho mục đích thương mại.
